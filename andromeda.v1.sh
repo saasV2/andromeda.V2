@@ -46,7 +46,7 @@ direitos_instalador() {
     echo -e "${roxo}||  ${branco}de cada aplicação incluída. Este instalador é licenciado sob a Licença MIT (MIT), permitindo que       ${roxo}||${reset}"
     echo -e "${roxo}||  ${branco}você copie, modifique, integre, publique, distribua e/ou venda cópias dos produtos finais. No          ${roxo}||${reset}"
     echo -e "${roxo}||  ${branco}entanto, é obrigatório atribuir a autoria original à Sinergia Lucrativa (\e[1m${azul}suporte@sinergialucrativa.com\e[0m${branco})${reset}"
-    echo -e "${roxo}||  ${branco}e fornecer um link para \e[1m${roxo}https://www.instagram.com/binho_v1/\e[0m${branco}.                                           ${roxo}||${reset}"
+    echo -e "${roxo}||  ${branco}e fornecer um link para \e[1m${azul}https://www.instagram.com/binho_v1/\e[0m${branco}.                                           ${roxo}||${reset}"
     echo -e "${roxo}||                                                                                                         ||${reset}"
     echo -e "${roxo}=============================================================================================================${reset}"
     echo ""
