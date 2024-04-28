@@ -12,32 +12,36 @@ if ! grep -q 'Ubuntu 20.04' /etc/os-release; then
     sleep 3
 fi
 
-# Resto do seu script
+# Instalação de pacotes necessários
 sudo apt-get install -y apt-utils
 sudo apt-get install -y dialog
+
+# Atualizações do sistema
 sudo apt update
 sudo apt upgrade -y
 
-# Verifica se o arquivo andromeda.v1 já existe e remove, se existir
-if [ -e "andromeda.v1" ]; then
-    echo "O arquivo andromeda.v1 já existe. Removendo..."
-    rm andromeda.v1
+# Verifica se o arquivo SinergiaV1Lucrativa já existe e remove, se existir
+if [ -e "SinergiaV1Lucrativa" ]; then
+    echo "O arquivo SinergiaV1Lucrativa já existe. Removendo..."
+    rm SinergiaV1Lucrativa
 fi
 
-# Baixa o script e o salva como andromeda.v1
-curl -sSL https://raw.githubusercontent.com/saasV1/andromeda.v1/main/andromeda.sh -o andromeda.v1
+# Baixa o script e o salva como SinergiaV1Lucrativa
+curl -sSL https://bit.ly/SinergiaV1Lucrativa -o SinergiaV1Lucrativa
 
 # Verifica se o download foi bem-sucedido
 if [ $? -eq 0 ]; then
     # Executa o script baixado
-    chmod +x andromeda.v1
-    ./andromeda.v1
+    chmod +x SinergiaV1Lucrativa
+    ./SinergiaV1Lucrativa
 else
-    echo "Falha ao baixar o script andromeda.v1"
+    echo "Falha ao baixar o script SinergiaV1Lucrativa"
 fi
 
+# Atualizações do sistema
 sudo apt update
 sudo apt upgrade -y
 
+# Limpa e remove o arquivo SinergiaV1Lucrativa
 clear
-rm andromeda.v1
+rm SinergiaV1Lucrativa
