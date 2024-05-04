@@ -1084,6 +1084,8 @@ menu_instalador(){
     echo -e "${verde}[ 19 ]${reset} - ${branco}Qdrant                                  ${verde}| ${reset}  ${verde}[ 42 ]${reset} - ${branco}Sair do instalador${reset}"
     echo -e "${verde}[ 20 ]${reset} - ${branco}Woofed CRM                              ${verde}| ${reset}" # ${verde}[ 43 ]${reset} - ${branco}Ainda Vazio${reset}"
     echo""
+}
+    
 
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 ##                                         ANDROMEDA                                           ##
