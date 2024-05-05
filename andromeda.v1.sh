@@ -321,7 +321,15 @@ nome_menu() {
     echo -e "\e[38;5;129m                                                                                     \e[0m"
     echo -e "\e[38;5;129m========================================================================================\e[0m"
     echo ""
+    versao
 }
+
+versao() {
+    echo -e "\e[97mComunidade: \e[32m\e]8;;https://chat.whatsapp.com/Ez8z14o9SxV1w1Ya3clxtM\e\\[link]https://chat.whatsapp.com/Ez8z14o9SxV1w1Ya3clxtM\e[0m                \e[97mVersão do Setup: \e[32mv.2.5.0\e[0m"
+}
+
+# Chamando a função nome_menu
+nome_menu
 
 
 ## Titulo Teste de Email [0]
