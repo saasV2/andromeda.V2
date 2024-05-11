@@ -1068,7 +1068,7 @@ nome_finalizado() {
 
 menu_instalador(){
     echo ""
-    echo "-----------------------------------------------------------------------------------------------"
+    echo -e "\e[38;5;129m-----------------------------------------------------------------------------------------------\e[0m"
     echo -e "\e[38;5;129m[ 0 ]\e[0m -  ${branco}Testar SMTP                \e[38;5;92m|\e[0m \e[38;5;129m[ 13 ]\e[0m - ${branco}MongoDB         \e[38;5;92m|\e[0m \e[38;5;129m[ 28 ]\e[0m - ${branco}N8N + Nodes Quepasa\e[0m"
     echo -e "\e[38;5;129m[ 1 ]\e[0m -  ${branco}Traefik & Portainer        \e[38;5;92m|\e[0m \e[38;5;129m[ 14 ]\e[0m - ${branco}RabbitMQ        \e[38;5;92m|\e[0m \e[38;5;129m[ 29 ]\e[0m - ${branco}Quepasa API\e[0m"
     echo -e "\e[38;5;129m[ 2 ]\e[0m -  ${branco}Chatwoot                   \e[38;5;92m|\e[0m \e[38;5;129m[ 15 ]\e[0m - ${branco}Uptime Kuma     \e[38;5;92m|\e[0m \e[38;5;129m[ 30 ]\e[0m - ${branco}Docuseal\e[0m"
@@ -1084,7 +1084,7 @@ menu_instalador(){
     echo -e "\e[38;5;129m[ 10 ]\e[0m - ${branco}Botpress                   \e[38;5;92m|\e[0m \e[38;5;129m[ 25 ]\e[0m - ${branco}Odoo            \e[38;5;92m|\e[0m \e[38;5;129m[ 40 ]\e[0m - ${branco}Supabase \e[38;5;129m[NOVO]\e[0m"
     echo -e "\e[38;5;129m[ 11 ]\e[0m - ${branco}Wordpress                  \e[38;5;92m|\e[0m \e[38;5;129m[ 26 ]\e[0m - ${branco}Chatwoot Nestor \e[38;5;92m|\e[0m \e[38;5;129m[ 41 ]\e[0m - ${branco}REMOVER STACK\e[0m"
     echo -e "\e[38;5;129m[ 12 ]\e[0m - ${branco}Baserow                    \e[38;5;92m|\e[0m \e[38;5;129m[ 27 ]\e[0m - ${branco}Uno API         \e[38;5;92m|\e[0m \e[38;5;129m[ 42 ]\e[0m - ${branco}Sair do instalador\e[0m"
-    echo "-----------------------------------------------------------------------------------------------"
+    echo -e "\e[38;5;129m-----------------------------------------------------------------------------------------------\e[0m"
     echo""
 }     
     
