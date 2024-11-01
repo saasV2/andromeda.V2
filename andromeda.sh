@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ORION DESIGN                                        ##
+##                                         ANDROMEDA                                         ##
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
 ## Cores
@@ -13,36 +13,34 @@ vermelho="\e[91m"
 reset="\e[0m"
 
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ORION DESIGN                                        ##
+##                                         ANDROMEDA                                         ##
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
 sudo apt update
-
 sudo apt upgrade -y
 
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ORION DESIGN                                        ##
+##                                         ANDROMEDA                                         ##
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
-nome_aviso(){
-
-clear
-echo ""
-echo -e "$amarelo===================================================================================================$reset"
-echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-echo -e "$amarelo=                     $branco  █████╗     ██╗   ██╗    ██╗    ███████╗     ██████╗                       $amarelo=$reset"
-echo -e "$amarelo=                     $branco ██╔══██╗    ██║   ██║    ██║    ██╔════╝    ██╔═══██╗                      $amarelo=$reset"
-echo -e "$amarelo=                     $branco ███████║    ██║   ██║    ██║    ███████╗    ██║   ██║                      $amarelo=$reset"
-echo -e "$amarelo=                     $branco ██╔══██║    ╚██╗ ██╔╝    ██║    ╚════██║    ██║   ██║                      $amarelo=$reset"
-echo -e "$amarelo=                     $branco ██║  ██║     ╚████╔╝     ██║    ███████║    ╚██████╔╝                      $amarelo=$reset"
-echo -e "$amarelo=                     $branco ╚═╝  ╚═╝      ╚═══╝      ╚═╝    ╚══════╝     ╚═════╝                       $amarelo=$reset"
-echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-echo -e "$amarelo===================================================================================================$reset"
-echo ""
-echo ""
+nome_aviso() {
+    clear
+    echo ""
+    echo -e "$amarelo===================================================================================================$reset"
+    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
+    echo -e "$amarelo=                     $branco  █████╗     ██╗   ██╗    ██╗    ███████╗     ██████╗                       $amarelo=$reset"
+    echo -e "$amarelo=                     $branco ██╔══██╗    ██║   ██║    ██║    ██╔════╝    ██╔═══██╗                      $amarelo=$reset"
+    echo -e "$amarelo=                     $branco ███████║    ██║   ██║    ██║    ███████╗    ██║   ██║                      $amarelo=$reset"
+    echo -e "$amarelo=                     $branco ██╔══██║    ╚██╗ ██╔╝    ██║    ╚════██║    ██║   ██║                      $amarelo=$reset"
+    echo -e "$amarelo=                     $branco ██║  ██║     ╚████╔╝     ██║    ███████║    ╚██████╔╝                      $amarelo=$reset"
+    echo -e "$amarelo=                     $branco ╚═╝  ╚═╝      ╚═══╝      ╚═╝    ╚══════╝     ╚═════╝                       $amarelo=$reset"
+    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
+    echo -e "$amarelo===================================================================================================$reset"
+    echo ""
+    echo ""
 }
 
-nome_atualizadno(){
+nome_atualizando() {
     clear
     echo ""
     echo -e "$amarelo===================================================================================================$reset"
@@ -58,7 +56,8 @@ nome_atualizadno(){
     echo ""
     echo ""
 }
-nome_iniciando(){
+
+nome_iniciando() {
     clear
     echo ""
     echo -e "$amarelo===================================================================================================$reset"
@@ -75,7 +74,7 @@ nome_iniciando(){
     echo ""
 }
 
-nome_verificando(){
+nome_verificando() {
     clear
     echo ""
     echo -e "$amarelo===================================================================================================$reset"
@@ -91,8 +90,9 @@ nome_verificando(){
     echo ""
     echo ""
 }
+
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ORION DESIGN                                        ##
+##                                         ANDROMEDA                                           ##
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
 desc_ver(){
@@ -101,7 +101,7 @@ echo ""
 } 
 
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ORION DESIGN                                        ##
+##                                         ANDROMEDA                                           ##
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
 clear
@@ -113,7 +113,6 @@ sleep 1
 if ! grep -q 'Ubuntu 20.04' /etc/os-release; then
     nome_aviso
     desc_ver
-    #echo "Este script recomenda o uso do Ubuntu 20.04."
     sleep 5
     clear
     nome_verificando
@@ -201,7 +200,7 @@ sudo apt install apache2-utils -y > /dev/null 2>&1
 if [ $? -eq 0 ]; then
     echo "7/13 - [ OK ] - Verificando/Instalando apache2-utils 1/2"
 else
-    echo "7/13 - [ OFF ] - Verificando/Instalando apache2-utils1/2"
+    echo "7/13 - [ OFF ] - Verificando/Instalando apache2-utils 1/2"
 fi
 
 echo ""
@@ -254,10 +253,10 @@ else
     echo "12/13 - [ OFF ] - Fazendo Upgrade"
 fi
 
-# Verifica se o arquivo SetupOrion já existe
-if [ -e "SetupOrion" ]; then
+# Verifica se o arquivo SetupAndromeda já existe
+if [ -e "SetupAndromeda" ]; then
     echo ""
-    rm SetupOrion
+    rm SetupAndromeda
 fi
 
 # Baixa o script
@@ -265,21 +264,20 @@ curl -sSL https://bit.ly/AndromedaNet -o andromeda.v1.sh && chmod +x andromeda.v
 if [ $? -eq 0 ]; then
     echo "13/13 - [ OK ] - Baixando o script"
     # Executa o script baixado
-    chmod +x SetupOrion
-    ./SetupOrion
+    chmod +x SetupAndromeda
+    ./SetupAndromeda
 else
     echo "13/13 - [ OFF ] - Baixando o script"
     echo "Encerrando o setup"
     sleep 5
 fi
 
-
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ORION DESIGN                                        ##
+##                                         ANDROMEDA                                           ##
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
 sudo apt update
 sudo apt upgrade -y
 
 clear
-rm SetupOrion
+rm SetupAndromeda
