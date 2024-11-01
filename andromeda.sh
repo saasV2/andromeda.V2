@@ -1,8 +1,8 @@
 #!/bin/bash
 
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ORION DESIGN                                        ##
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
+## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
+##                                         ORION DESIGN                                        ## 
+## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
 
 ## Cores
 amarelo="\e[33m"
@@ -12,12 +12,16 @@ bege="\e[93m"
 vermelho="\e[91m"
 reset="\e[0m"
 
+## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
+##                                         ORION DESIGN                                        ## 
+## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
+
 sudo apt update
 sudo apt upgrade -y
 
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ORION DESIGN                                        ##
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
+## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
+##                                         ORION DESIGN                                        ## 
+## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
 
 nome_aviso(){
     clear
@@ -80,52 +84,44 @@ nome_verificando(){
     echo -e "$amarelo=       $branco ██║   ██║█████╗  ██████╔╝██║█████╗  ██║██║     ███████║██╔██╗ ██║██║  ██║██║   ██║      $amarelo=$reset"
     echo -e "$amarelo=       $branco ╚██╗ ██╔╝██╔══╝  ██╔══██╗██║██╔══╝  ██║██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║      $amarelo=$reset"
     echo -e "$amarelo=        ╚████╔╝ ███████╗██║  ██║██║███████╗██║╚██████╗╚██████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝      $amarelo=$reset"
-    echo -e "$amarelo=        ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚═╝ ╚═════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝       $amarelo=$reset"
+    echo -e "$amarelo=       $branco ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚═╝ ╚═════╝ ╚═════╝╚═╝  ╚═══╝╚═════╝  ╚═════╝       $amarelo=$reset"
     echo -e "$amarelo=                                                                                                 $amarelo=$reset"
     echo -e "$amarelo===================================================================================================$reset"
     echo ""
     echo ""
 }
 
-nome_execucao(){
-    clear
-    echo ""
-    echo -e "$amarelo===================================================================================================$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo=                      $branco ██╗███╗   ██╗██╗ ██████╗██╗ █████╗ ███╗   ██╗██████╗  ██████╗                $amarelo=$reset"
-    echo -e "$amarelo=                      $branco ██║████╗  ██║██║██╔════╝██║██╔══██╗████╗  ██║██╔══██╗██╔═══██╗               $amarelo=$reset"
-    echo -e "$amarelo=                      $branco ██║██╔██╗ ██║██║██║     ██║███████║██╔██╗ ██║██║  ██║██║   ██║               $amarelo=$reset"
-    echo -e "$amarelo=                      $branco ██║██║╚██╗██║██║██║     ██║██╔══██║██║╚██╗██║██║  ██║██║   ██║               $amarelo=$reset"
-    echo -e "$amarelo=                      $branco ██║██║ ╚████║██║╚██████╗██║██║  ██║██║ ╚████║██████╔╝╚██████╔╝               $amarelo=$reset"
-    echo -e "$amarelo=                      $branco ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝                $amarelo=$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo===================================================================================================$reset"
-    echo ""
-    echo ""
+# Baixar e executar o script andromeda.v1.sh
+baixar_e_executar_andromeda() {
+    script_path="$HOME/Desktop/andromeda.v1.sh"
+    
+    # Verificar se o arquivo já existe
+    if [[ ! -f "$script_path" ]]; then
+        echo -e "${verde}Baixando o script Andromeda...${reset}"
+        curl -o "$script_path" "URL_DO_SEU_SCRIPT" # Substitua pela URL correta
+    else
+        echo -e "${verde}Script Andromeda já encontrado em $script_path.${reset}"
+    fi
+
+    # Executar o script
+    echo -e "${verde}Executando o script Andromeda...${reset}"
+    chmod +x "$script_path"
+    "$script_path"
 }
 
-nome_concluido(){
-    clear
-    echo ""
-    echo -e "$amarelo===================================================================================================$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo=                   $branco █████╗  ██╗   ██╗██╗  ██╗██╗ ██████╗ ██╗   ██╗███████╗██████╗ ██╗ ██████╗  $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ██╔══██╗██║   ██║██║  ██║██║██╔════╝ ██║   ██║██╔════╝██╔══██╗██║██╔════╝  $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ███████║██║   ██║███████║██║██║  ███╗██║   ██║█████╗  ██████╔╝██║██║  ███╗ $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ██╔══██║██║   ██║██╔══██║██║██║   ██║██║   ██║██╔══╝  ██╔══██╗██║██║   ██║ $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ██║  ██║╚██████╔╝██║  ██║██║╚██████╔╝╚██████╔╝███████╗██║  ██║██║╚██████╔╝ $amarelo=$reset"
-    echo -e "$amarelo=                   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═════╝  $amarelo=$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo===================================================================================================$reset"
-    echo ""
-    echo ""
-}
-
+# Iniciar o processo
 nome_aviso
+sleep 2
+nome_atualizadno
+sleep 2
+nome_iniciando
+sleep 2
+nome_verificando
+sleep 2
 
-echo "Baixando arquivos necessários..."
-wget https://raw.githubusercontent.com/andreacn0/andromeda.v1/main/andromeda.v1.sh -O ~/Desktop/andromeda.v1.sh
-chmod +x ~/Desktop/andromeda.v1.sh
+# Instalar dependências
+echo -e "${bege}Instalando dependências...${reset}"
+sudo apt install -y software-properties-common curl
 
-echo "Executando o arquivo andromeda.v1.sh..."
-bash ~/Desktop/andromeda.v1.sh
+# Baixar e executar Andromeda
+baixar_e_executar_andromeda
