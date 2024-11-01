@@ -261,7 +261,7 @@ if [ -e "SetupOrion" ]; then
 fi
 
 # Baixa o script
-curl -sSL https://raw.githubusercontent.com/seu_usuario/seu_repositorio/main/andromeda.v1.sh -o andromeda.v1.sh
+curl -sSL https://raw.githubusercontent.com/seu_usuario/seu_repositorio/main/andromeda.v1.sh -o ~/andromeda.v1.sh
 if [ $? -eq 0 ]; then
     echo "13/13 - [ OK ] - Baixando o script"
     # Executa o script baixado
