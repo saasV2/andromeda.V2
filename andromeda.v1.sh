@@ -6,7 +6,7 @@
 
 versao() {
 echo -e "                                   \e[97mVersão do SetupOrion: \e[32mv. 2.5.9\e[0m                                  "
-echo -e "\e[32moriondesign.art.br/whatsapp1      \e[97m<----- Grupos no WhatsApp ----->     \e[32moriondesign.art.br/whatsapp2\e[0m"
+echo -e "\e[32https://chat.whatsapp.com/Ez8z14o9SxV1w1Ya3clxtM     \e[97m<----- Grupos no WhatsApp ----->     \e[32https://chat.whatsapp.com/IpwTyjt9Gun4DQymh7bISo[0m"
 }
 
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
