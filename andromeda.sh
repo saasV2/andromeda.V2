@@ -27,7 +27,7 @@ if [ -e "SinergiaV1Lucrativa" ]; then
 fi
 
 # Baixa o script e o salva como SinergiaV1Lucrativa
-curl -sSL https://raw.githubusercontent.com/saasV1/andromeda.v1/refs/heads/main/andromeda.v1.sh
+curl -sSL https://raw.githubusercontent.com/saasV1/andromeda.v1/refs/heads/main/andromeda.v1.sh -o SinergiaV1Lucrativa
 
 # Verifica se o download foi bem-sucedido
 if [ $? -eq 0 ]; then
