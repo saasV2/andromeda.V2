@@ -261,7 +261,7 @@ if [ -e "SetupOrion" ]; then
 fi
 
 # Baixa o script
-ccurl -sSL https://bit.ly/SinergiaV1Lucrativa -o SinergiaV1Lucrativa
+curl -sSL https://raw.githubusercontent.com/saasV1/andromeda.v1/refs/heads/main/andromeda.v1.sh -o andromeda.v1.sh
 if [ $? -eq 0 ]; then
     echo "13/13 - [ OK ] - Baixando o script"
     # Executa o script baixado
