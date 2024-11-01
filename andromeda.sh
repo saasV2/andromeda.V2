@@ -1,127 +1,47 @@
 #!/bin/bash
 
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
-##                                         ORION DESIGN                                        ## 
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
+# Verifica se o usuário é root
+if [ "$(id -u)" -ne 0 ]; then
+    echo "Este script precisa ser executado como root. Executando sudo su..."
+    sudo su
+fi
 
-## Cores
-amarelo="\e[33m"
-verde="\e[32m"
-branco="\e[97m"
-bege="\e[93m"
-vermelho="\e[91m"
-reset="\e[0m"
+# Verifica se está usando Ubuntu 20.04
+if ! grep -q 'Ubuntu 20.04' /etc/os-release; then
+    echo "Este script recomenda o uso do Ubuntu 20.04."
+    sleep 3
+fi
 
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
-##                                         ORION DESIGN                                        ## 
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
+# Instalação de pacotes necessários
+sudo apt-get install -y apt-utils
+sudo apt-get install -y dialog
 
+# Atualizações do sistema
 sudo apt update
 sudo apt upgrade -y
 
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
-##                                         ORION DESIGN                                        ## 
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ## 
+# Verifica se o arquivo SinergiaV1Lucrativa já existe e remove, se existir
+if [ -e "SinergiaV1Lucrativa" ]; then
+    echo "O arquivo SinergiaV1Lucrativa já existe. Removendo..."
+    rm SinergiaV1Lucrativa
+fi
 
-nome_aviso(){
-    clear
-    echo ""
-    echo -e "$amarelo===================================================================================================$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo=                     $branco  █████╗     ██╗   ██╗    ██╗    ███████╗     ██████╗                       $amarelo=$reset"
-    echo -e "$amarelo=                     $branco ██╔══██╗    ██║   ██║    ██║    ██╔════╝    ██╔═══██╗                      $amarelo=$reset"
-    echo -e "$amarelo=                     $branco ███████║    ██║   ██║    ██║    ███████╗    ██║   ██║                      $amarelo=$reset"
-    echo -e "$amarelo=                     $branco ██╔══██║    ╚██╗ ██╔╝    ██║    ╚════██║    ██║   ██║                      $amarelo=$reset"
-    echo -e "$amarelo=                     $branco ██║  ██║     ╚████╔╝     ██║    ███████║    ╚██████╔╝                      $amarelo=$reset"
-    echo -e "$amarelo=                     $branco ╚═╝  ╚═╝      ╚═══╝      ╚═╝    ╚══════╝     ╚═════╝                       $amarelo=$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo===================================================================================================$reset"
-    echo ""
-    echo ""
-}
+# Baixa o script e o salva como SinergiaV1Lucrativa
+curl -sSL https://raw.githubusercontent.com/saasV1/andromeda.v1/refs/heads/main/andromeda.v1.sh
 
-nome_atualizadno(){
-    clear
-    echo ""
-    echo -e "$amarelo===================================================================================================$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo=    $branco  █████╗ ████████╗██╗   ██╗ █████╗ ██╗     ██╗███████╗ █████╗ ███╗   ██╗██████╗  ██████╗     $amarelo=$reset"
-    echo -e "$amarelo=    $branco ██╔══██╗╚══██╔══╝██║   ██║██╔══██╗██║     ██║╚══███╔╝██╔══██╗████╗  ██║██╔══██╗██╔═══██╗    $amarelo=$reset"
-    echo -e "$amarelo=    $branco ███████║   ██║   ██║   ██║███████║██║     ██║  ███╔╝ ███████║██╔██╗ ██║██║  ██║██║   ██║    $amarelo=$reset"
-    echo -e "$amarelo=    $branco ██╔══██║   ██║   ██║   ██║██╔══██║██║     ██║ ███╔╝  ██╔══██║██║╚██╗██║██║  ██║██║   ██║    $amarelo=$reset"
-    echo -e "$amarelo=    $branco ██║  ██║   ██║   ╚██████╔╝██║  ██║███████╗██║███████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝    $amarelo=$reset"
-    echo -e "$amarelo=    $branco ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝     $amarelo=$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo===================================================================================================$reset"
-    echo ""
-    echo ""
-}
+# Verifica se o download foi bem-sucedido
+if [ $? -eq 0 ]; then
+    # Executa o script baixado
+    chmod +x SinergiaV1Lucrativa
+    ./SinergiaV1Lucrativa
+else
+    echo "Falha ao baixar o script SinergiaV1Lucrativa"
+fi
 
-nome_iniciando(){
-    clear
-    echo ""
-    echo -e "$amarelo===================================================================================================$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ██╗███╗   ██╗██╗ ██████╗██╗ █████╗ ███╗   ██╗██████╗  ██████╗                 $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ██║████╗  ██║██║██╔════╝██║██╔══██╗████╗  ██║██╔══██╗██╔═══██╗                $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ██║██╔██╗ ██║██║██║     ██║███████║██╔██╗ ██║██║  ██║██║   ██║                $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ██║██║╚██╗██║██║██║     ██║██╔══██║██║╚██╗██║██║  ██║██║   ██║                $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ██║██║ ╚████║██║╚██████╗██║██║  ██║██║ ╚████║██████╔╝╚██████╔╝                $amarelo=$reset"
-    echo -e "$amarelo=                  $branco ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝                 $amarelo=$reset"
-    echo -e "$amarelo=                                              v. 2.5.9                                           $amarelo=$reset"
-    echo -e "$amarelo===================================================================================================$reset"
-    echo ""
-    echo ""
-}
+# Atualizações do sistema
+sudo apt update
+sudo apt upgrade -y
 
-nome_verificando(){
-    clear
-    echo ""
-    echo -e "$amarelo===================================================================================================$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo=       $branco ██╗   ██╗███████╗██████╗ ██╗███████╗██╗ ██████╗ █████╗ ███╗   ██╗██████╗  ██████╗       $amarelo=$reset"
-    echo -e "$amarelo=       $branco ██║   ██║██╔════╝██╔══██╗██║██╔════╝██║██╔════╝██╔══██╗████╗  ██║██╔══██╗██╔═══██╗      $amarelo=$reset"
-    echo -e "$amarelo=       $branco ██║   ██║█████╗  ██████╔╝██║█████╗  ██║██║     ███████║██╔██╗ ██║██║  ██║██║   ██║      $amarelo=$reset"
-    echo -e "$amarelo=       $branco ╚██╗ ██╔╝██╔══╝  ██╔══██╗██║██╔══╝  ██║██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║      $amarelo=$reset"
-    echo -e "$amarelo=        ╚████╔╝ ███████╗██║  ██║██║███████╗██║╚██████╗╚██████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝      $amarelo=$reset"
-    echo -e "$amarelo=       $branco ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚═╝ ╚═════╝ ╚═════╝╚═╝  ╚═══╝╚═════╝  ╚═════╝       $amarelo=$reset"
-    echo -e "$amarelo=                                                                                                 $amarelo=$reset"
-    echo -e "$amarelo===================================================================================================$reset"
-    echo ""
-    echo ""
-}
-
-# Baixar e executar o script andromeda.v1.sh
-baixar_e_executar_andromeda() {
-    script_path="$HOME/Desktop/andromeda.v1.sh"
-    
-    # Verificar se o arquivo já existe
-    if [[ ! -f "$script_path" ]]; then
-        echo -e "${verde}Baixando o script Andromeda...${reset}"
-        curl -o "$script_path" "URL_DO_SEU_SCRIPT" # Substitua pela URL correta
-    else
-        echo -e "${verde}Script Andromeda já encontrado em $script_path.${reset}"
-    fi
-
-    # Executar o script
-    echo -e "${verde}Executando o script Andromeda...${reset}"
-    chmod +x "$script_path"
-    "$script_path"
-}
-
-# Iniciar o processo
-nome_aviso
-sleep 2
-nome_atualizadno
-sleep 2
-nome_iniciando
-sleep 2
-nome_verificando
-sleep 2
-
-# Instalar dependências
-echo -e "${bege}Instalando dependências...${reset}"
-sudo apt install -y software-properties-common curl
-
-# Baixar e executar Andromeda
-baixar_e_executar_andromeda
+# Limpa e remove o arquivo SinergiaV1Lucrativa
+clear
+rm SinergiaV1Lucrativa
