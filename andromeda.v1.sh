@@ -1406,19 +1406,19 @@ menu_instalador() {
 }
 
 menu_instalador_pg_1(){
-    echo -e "${amarelo}[ 00 ]${reset} - ${branco}Testar SMTP                            ${verde}|
-    echo -e "${amarelo}[ 01 ]${reset} - ${branco}Traefik & Portainer                    ${verde}| 
-    echo -e "${amarelo}[ 02 ]${reset} - ${branco}Chatwoot                               ${verde}|
-    echo -e "${branco}  '-->${amarelo}[ 2.1 ]${reset} - ${branco}Chatwoot (ARM)                  ${verde}| 
-    echo -e "${amarelo}[ 03 ]${reset} -  ${branco}Evolution API                         ${verde}| 
-    echo -e "${amarelo}[ 04 ]${reset} - ${branco}MinIO                                  ${verde}| 
-    echo -e "${amarelo}[ 05 ]${reset} - ${branco}Typebot                                ${verde}| 
-    echo -e "${amarelo}[ 06 ]${reset} - ${branco}N8N                                    ${verde}| 
-    echo -e "${amarelo}[ 07 ]${reset} - ${branco}Flowise                                ${verde}| 
-    echo -e "${amarelo}[ 08 ]${reset} - ${branco}PgAdmin 4                              ${verde}| 
-    echo -e "${amarelo}[ 09 ]${reset} - ${branco}Nocobase                               ${verde}| 
-    echo -e "${amarelo}[ 10 ]${reset} - ${branco}Botpress                               ${verde}| 
-    echo -e "${amarelo}[ 11 ]${reset} - ${branco}Wordpress                              ${verde}| 
+    echo -e "${amarelo}[ 00 ]${reset} - ${branco}Testar SMTP                            
+    echo -e "${amarelo}[ 01 ]${reset} - ${branco}Traefik & Portainer                     
+    echo -e "${amarelo}[ 02 ]${reset} - ${branco}Chatwoot                               
+    echo -e "${branco}  '-->${amarelo}[ 2.1 ]${reset} - ${branco}Chatwoot (ARM)                  
+    echo -e "${amarelo}[ 03 ]${reset} -  ${branco}Evolution API                          
+    echo -e "${amarelo}[ 04 ]${reset} - ${branco}MinIO                                   
+    echo -e "${amarelo}[ 05 ]${reset} - ${branco}Typebot                                
+    echo -e "${amarelo}[ 06 ]${reset} - ${branco}N8N                                     
+    echo -e "${amarelo}[ 07 ]${reset} - ${branco}Flowise                                 
+    echo -e "${amarelo}[ 08 ]${reset} - ${branco}PgAdmin 4                               
+    echo -e "${amarelo}[ 09 ]${reset} - ${branco}Nocobase                                
+    echo -e "${amarelo}[ 10 ]${reset} - ${branco}Botpress                                
+    echo -e "${amarelo}[ 11 ]${reset} - ${branco}Wordpress                              
     echo -e ""
     echo -e ""
 }
