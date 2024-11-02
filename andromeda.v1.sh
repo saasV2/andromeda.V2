@@ -1406,23 +1406,63 @@ menu_instalador() {
 }
 
 menu_instalador_pg_1(){
-    echo -e "${amarelo}[ 00 ]${reset} - ${branco}Testar SMTP                            
-    echo -e "${amarelo}[ 01 ]${reset} - ${branco}Traefik & Portainer                     
-    echo -e "${amarelo}[ 02 ]${reset} - ${branco}Chatwoot                               
-    echo -e "${branco}  '-->${amarelo}[ 2.1 ]${reset} - ${branco}Chatwoot (ARM)                  
-    echo -e "${amarelo}[ 03 ]${reset} -  ${branco}Evolution API                          
-    echo -e "${amarelo}[ 04 ]${reset} - ${branco}MinIO                                   
-    echo -e "${amarelo}[ 05 ]${reset} - ${branco}Typebot                                
-    echo -e "${amarelo}[ 06 ]${reset} - ${branco}N8N                                     
-    echo -e "${amarelo}[ 07 ]${reset} - ${branco}Flowise                                 
-    echo -e "${amarelo}[ 08 ]${reset} - ${branco}PgAdmin 4                               
-    echo -e "${amarelo}[ 09 ]${reset} - ${branco}Nocobase                                
-    echo -e "${amarelo}[ 10 ]${reset} - ${branco}Botpress                                
-    echo -e "${amarelo}[ 11 ]${reset} - ${branco}Wordpress                              
+    echo -e "${amarelo}[ 00 ]${reset} - ${branco}Testar SMTP                            ${verde}| ${reset}  ${amarelo}[ 22 ]${reset} - ${branco}NocoDB${reset}"
+    echo -e "${amarelo}[ 01 ]${reset} - ${branco}Traefik & Portainer                    ${verde}| ${reset}  ${amarelo}[ 23 ]${reset} - ${branco}Langfuse${reset}"
+    echo -e "${amarelo}[ 02 ]${reset} - ${branco}Chatwoot                               ${verde}| ${reset}  ${amarelo}[ 24 ]${reset} - ${branco}Metabase${reset}"
+    echo -e "${branco}  '-->${amarelo}[ 2.1 ]${reset} - ${branco}Chatwoot (ARM)                  ${verde}| ${reset}  ${amarelo}[ 25 ]${reset} - ${branco}Odoo${reset}"
+    echo -e "${amarelo}[ 03 ]${reset} -  ${branco}Evolution API                         ${verde}| ${reset}  ${amarelo}[ 26 ]${reset} - ${branco}Chatwoot Nestor${reset}"
+    echo -e "${amarelo}[ 04 ]${reset} - ${branco}MinIO                                  ${verde}| ${reset}  ${amarelo}[ 27 ]${reset} - ${branco}Uno API${reset}"
+    echo -e "${amarelo}[ 05 ]${reset} - ${branco}Typebot                                ${verde}| ${reset}  ${amarelo}[ 28 ]${reset} - ${branco}N8N + Nodes Quepasa${reset}"
+    echo -e "${amarelo}[ 06 ]${reset} - ${branco}N8N                                    ${verde}| ${reset}  ${amarelo}[ 29 ]${reset} - ${branco}Quepasa API${reset}"
+    echo -e "${amarelo}[ 07 ]${reset} - ${branco}Flowise                                ${verde}| ${reset}  ${amarelo}[ 30 ]${reset} - ${branco}Docuseal${reset}"
+    echo -e "${amarelo}[ 08 ]${reset} - ${branco}PgAdmin 4                              ${verde}| ${reset}  ${amarelo}[ 31 ]${reset} - ${branco}Grafana + Prometheus + cAdvisor${reset}"
+    echo -e "${amarelo}[ 09 ]${reset} - ${branco}Nocobase                               ${verde}| ${reset}  ${amarelo}[ 32 ]${reset} - ${branco}Dify AI${reset}"
+    echo -e "${amarelo}[ 10 ]${reset} - ${branco}Botpress                               ${verde}| ${reset}  ${amarelo}[ 33 ]${reset} - ${branco}Ollama${reset}"
+    echo -e "${amarelo}[ 11 ]${reset} - ${branco}Wordpress                              ${verde}| ${reset}  ${amarelo}[ 34 ]${reset} - ${branco}Affine${reset}"
+    echo -e "${amarelo}[ 12 ]${reset} - ${branco}Baserow                                ${verde}| ${reset}  ${amarelo}[ 35 ]${reset} - ${branco}Directus${reset}"
+    echo -e "${amarelo}[ 13 ]${reset} - ${branco}MongoDB                                ${verde}| ${reset}  ${amarelo}[ 36 ]${reset} - ${branco}VaultWarden${reset}"
+    echo -e "${amarelo}[ 14 ]${reset} - ${branco}RabbitMQ                               ${verde}| ${reset}  ${amarelo}[ 37 ]${reset} - ${branco}NextCloud${reset}"
+    echo -e "${amarelo}[ 15 ]${reset} - ${branco}Uptime Kuma                            ${verde}| ${reset}  ${amarelo}[ 38 ]${reset} - ${branco}Strapi${reset}"
+    echo -e "${amarelo}[ 16 ]${reset} - ${branco}Cal.com                                ${verde}| ${reset}  ${amarelo}[ 39 ]${reset} - ${branco}PhpMyAdmin${reset}"
+    echo -e "${amarelo}[ 17 ]${reset} - ${branco}Mautic                                 ${verde}| ${reset}  ${amarelo}[ 40 ]${reset} - ${branco}Supabase${reset}"
+    echo -e "${amarelo}[ 18 ]${reset} - ${branco}Appsmith                               ${verde}| ${reset}  ${amarelo}[ 41 ]${reset} - ${branco}Ntfy${reset}"
+    echo -e "${amarelo}[ 19 ]${reset} - ${branco}Qdrant                                 ${verde}| ${reset}  ${amarelo}[ 42 ]${reset} - ${branco}LowCoder ${reset}"
+    echo -e "${amarelo}[ 20 ]${reset} - ${branco}Woofed CRM                             ${verde}| ${reset}  ${amarelo}[ 43 ]${reset} - ${branco}LangFlow${reset}"
+    echo -e "${amarelo}[ 21 ]${reset} - ${branco}Formbricks                             ${verde}| ${reset}  ${amarelo}[ 44 ]${reset} - ${branco}OpenProject${reset}"
     echo -e ""
+    echo -e "${branco}<-- Digite ${amarelo}P1 ${branco}para ir para pagina 1             ${amarelo}|${branco}              Digite ${amarelo}P2${branco} para ir para pagina 2 -->${reset}"
     echo -e ""
 }
 
+menu_instalador_pg_2(){
+    echo -e "${amarelo}[ 45 ]${reset} - ${branco}ZEP                                    ${verde}| ${reset}  ${amarelo}[ 68 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 46 ]${reset} - ${branco}HumHub                                 ${verde}| ${reset}  ${amarelo}[ 69 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 47 ]${reset} - ${branco}Yourls                                 ${verde}| ${reset}  ${amarelo}[ 70 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 48 ]${reset} - ${branco}TwentyCRM                              ${verde}| ${reset}  ${amarelo}[ 71 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 49 ]${reset} - ${branco}Mattermost                             ${verde}| ${reset}  ${amarelo}[ 72 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 50 ]${reset} - ${branco}Outline                                ${verde}| ${reset}  ${amarelo}[ 73 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 51 ]${reset} - ${branco}Focalboard                             ${verde}| ${reset}  ${amarelo}[ 74 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 52 ]${reset} - ${branco}GLPI                                   ${verde}| ${reset}  ${amarelo}[ 75 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 53 ]${reset} - ${branco}Anything LLM ${verde}[NOVO]                    ${verde}| ${reset}  ${amarelo}[ 76 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 54 ]${reset} - ${branco}Excalidraw ${verde}[NOVO]                      ${verde}| ${reset}  ${amarelo}[ 77 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 55 ]${reset} - ${branco}Easy!Apointments ${verde}[NOVO]                ${verde}| ${reset}  ${amarelo}[ 78 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 56 ]${reset} - ${branco}Documenso ${verde}[NOVO]                       ${verde}| ${reset}  ${amarelo}[ 79 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 57 ]${reset} - ${branco}Moodle ${verde}[NOVO]                          ${verde}| ${reset}  ${amarelo}[ 80 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 58 ]${reset} - ${branco}ToolJet ${verde}[NOVO]                         ${verde}| ${reset}  ${amarelo}[ 81 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 59 ]${reset} - ${branco}EM BREVE...                            ${verde}| ${reset}  ${amarelo}[ 82 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 60 ]${reset} - ${branco}EM BREVE...                            ${verde}| ${reset}  ${amarelo}[ 83 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 61 ]${reset} - ${branco}EM BREVE...                            ${verde}| ${reset}  ${amarelo}[ 84 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 62 ]${reset} - ${branco}EM BREVE...                            ${verde}| ${reset}  ${amarelo}[ 85 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 63 ]${reset} - ${branco}EM BREVE...                            ${verde}| ${reset}  ${amarelo}[ 86 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 64 ]${reset} - ${branco}EM BREVE...                            ${verde}| ${reset}  ${amarelo}[ 87 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 65 ]${reset} - ${branco}EM BREVE...                            ${verde}| ${reset}  ${amarelo}[ 88 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 66 ]${reset} - ${branco}EM BREVE...                            ${verde}| ${reset}  ${amarelo}[ 89 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e "${amarelo}[ 67 ]${reset} - ${branco}EM BREVE...                            ${verde}| ${reset}  ${amarelo}[ 90 ]${reset} - ${branco}EM BREVE...${reset}"
+    echo -e ""
+    echo -e ""
+    echo -e "${branco}<-- Digite ${amarelo}P1 ${branco}para ir para pagina 1             ${amarelo}|${branco}              Digite ${amarelo}P2${branco} para ir para pagina 2 -->${reset}"
+    echo -e ""
+}
 
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 ##                                            ANDROMEDA                                        ##
