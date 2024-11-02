@@ -124,14 +124,13 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo su
 fi
 
-# Verifica se o usuário está no diretório /root/
-if [ "$PWD" != "/root" ]; then
-    echo "Mudando para o diretório /root/"
-    cd /root || exit
+# Verifica se o usuário está no diretório especificado
+if [ "$PWD" != "$DIR" ]; then
+    echo "Mudando para o diretório $DIR/"
+    cd "$DIR" || exit
 fi
 
 #------------------------------------------
-
 
 nome_iniciando 
 
@@ -260,7 +259,7 @@ if [ -e "SetupAndromeda" ]; then
 fi
 
 # Baixa o script
-curl -o andromeda.sh -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.v1.sh && bash andromeda.sh
+curl -o andromeda.sh -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.sh && bash andromeda.sh
 if [ $? -eq 0 ]; then
     echo "13/13 - [ OK ] - Baixando o script"
     # Executa o script baixado
