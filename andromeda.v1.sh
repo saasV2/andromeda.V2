@@ -1535,33 +1535,39 @@ stack_editavel(){
     #fi
 
     ## Salva dados no arquivo do portainer
-    echo -e "[ PORTAINER ]\nDominio do portainer: $PORTAINER_URL\n\nUsuario: $USUARIO\n\nSenha: $SENHA\n\nToken: $TOKEN" > "/root/dados_vps/dados_portainer"
+   # Salva dados no arquivo do portainer
+echo -e "[ PORTAINER ]\nDominio do portainer: $PORTAINER_URL\n\nUsuario: $USUARIO\n\nSenha: $SENHA\n\nToken: $TOKEN" > "/root/dados_vps/dados_portainer"
 
-    ## Pegando o id do portainer
-    ENDPOINT_ID=$(curl -k -s -X GET -H "Authorization: Bearer $TOKEN" https://$PORTAINER_URL/api/endpoints | jq -r '.[] | select(.Name == "primary") | .Id')
-    if [ $? -eq 0 ]; then
-        echo -e "8/10 - [ OK ] - Pegando ID do Portainer: $bege$ENDPOINT_ID$reset"
-    else
-        echo "8/10 - [ OFF ] - Erro ao pegar ID do Portainer"
-    fi
+# Pegando o id do portainer
+ENDPOINT_ID=$(curl -k -s -X GET -H "Authorization: Bearer $TOKEN" "https://$PORTAINER_URL/api/endpoints" | jq -r '.[] | select(.Name == "primary") | .Id')
 
-    ## Definindo id 1 do Portainer
-    #ENDPOINT_ID=1
-    
-    ## Pegando o ID do Swarm
-    SWARM_ID=$(curl -k -s -X GET -H "Authorization: Bearer $TOKEN" "https://$PORTAINER_URL/api/endpoints/$ENDPOINT_ID/docker/swarm" | jq -r .ID)
-    if [ $? -eq 0 ]; then
-        echo -e "9/10 - [ OK ] - Pegando ID do Swarm: $bege$SWARM_ID$reset"
-    else
-        echo "9/10 - [ OFF ] - Erro ao pegar ID do Swarm"
-    fi
+# Verifica se o comando anterior foi bem-sucedido
+if [ $? -eq 0 ]; then
+    echo -e "8/10 - [ OK ] - Pegando ID do Portainer: $bege$ENDPOINT_ID$reset"
+else
+    echo "8/10 - [ OFF ] - Erro ao pegar ID do Portainer"
+    exit 1  # Adiciona uma saída se ocorrer um erro
+fi
 
-    ## Testa o Swarm
-    SWARM_STATUS=$(docker info --format '{{.Swarm.LocalNodeState}}')
-    if [ "$SWARM_STATUS" != "active" ]; then
-        echo "Erro: Docker Swarm não está ativo."
-        exit 1
-    fi
+# Pegando o ID do Swarm
+SWARM_ID=$(curl -k -s -X GET -H "Authorization: Bearer $TOKEN" "https://$PORTAINER_URL/api/endpoints/$ENDPOINT_ID/docker/swarm" | jq -r .ID)
+
+# Verifica se o comando anterior foi bem-sucedido
+if [ $? -eq 0 ]; then
+    echo -e "9/10 - [ OK ] - Pegando ID do Swarm: $bege$SWARM_ID$reset"
+else
+    echo "9/10 - [ OFF ] - Erro ao pegar ID do Swarm"
+    exit 1  # Adiciona uma saída se ocorrer um erro
+fi
+
+# Testa o Swarm
+SWARM_STATUS=$(docker info --format '{{.Swarm.LocalNodeState}}')
+
+# Verifica se o Swarm está ativo
+if [ "$SWARM_STATUS" != "active" ]; then
+    echo "Erro: Docker Swarm não está ativo."
+    exit 1
+fi
 
     # Arquivo temporário para capturar a saída de erro e a resposta
     erro_output=$(mktemp)
