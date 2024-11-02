@@ -259,7 +259,7 @@ if [ -e "SetupAndromeda" ]; then
 fi
 
 # Baixa o script
-curl -o andromeda.sh -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.sh && bash andromeda.sh
+curl -o andromeda.sh -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.v1.sh && bash andromeda.sh
 if [ $? -eq 0 ]; then
     echo "13/13 - [ OK ] - Baixando o script"
     # Executa o script baixado
