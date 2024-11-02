@@ -258,18 +258,19 @@ if [ -e "SetupAndromeda" ]; then
     rm SetupAndromeda
 fi
 
-# Baixa o script
-curl -o andromeda.sh -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.v1.sh && bash andromeda.sh
+# Baixa o script principal
+curl -o andromeda.sh -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.sh
+
+# Verifica se o download foi bem-sucedido
 if [ $? -eq 0 ]; then
-    echo "13/13 - [ OK ] - Baixando o script"
-    # Executa o script baixado
-    chmod +x SetupAndromeda
-    ./SetupAndromeda
+    echo "Download bem-sucedido! Executando o script..."
+    chmod +x andromeda.sh  # Torna o script executável
+    ./andromeda.sh  # Executa o script
 else
-    echo "13/13 - [ OFF ] - Baixando o script"
-    echo "Encerrando o setup"
-    sleep 5
+    echo "Falha ao baixar o script. Encerrando."
+    exit 1
 fi
+
 
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 ##                                         ANDROMEDA                                           ##
