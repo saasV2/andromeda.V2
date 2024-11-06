@@ -95,17 +95,9 @@ nome_verificando() {
 ##                                         ANDROMEDA                                           ##
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
-desc_ver(){
-echo -e "                            Este script recomenda o uso do Ubuntu$amarelo 20.04$branco.$reset"
-echo ""
-} 
-
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ANDROMEDA                                           ##
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
 clear
-echo "Aguarde enquanto verificamos algumas informações."
+echo "Aguarde enquanto verificamos algumas informações..."
 sleep 1
 
 # Verifica se está usando Ubuntu 20.04
@@ -121,22 +113,26 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-# Verifica se o usuário está no diretório especificado
-DIR="/caminho/do/diretorio"  # Defina o diretório desejado aqui
+# Define o diretório desejado e verifica se o usuário está nele
+DIR="/caminho/do/diretorio"  # Substitua pelo caminho do diretório desejado
 if [ "$PWD" != "$DIR" ]; then
     echo "Mudando para o diretório $DIR/"
     cd "$DIR" || exit
 fi
 
-echo "Iniciando o processo de atualização e instalação..."
+echo "Iniciando o processo de atualização e instalação dos pacotes..."
 
-# Upgrade do sistema
-sudo apt update -y && sudo apt upgrade -y > /dev/null 2>&1
-echo "1/13 - [ OK ] - Atualização do sistema concluída"
+# Atualiza e faz upgrade do sistema
+sudo apt update -y > /dev/null 2>&1 && sudo apt upgrade -y > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    echo "1/13 - [ OK ] - Sistema atualizado"
+else
+    echo "1/13 - [ OFF ] - Falha ao atualizar o sistema"
+fi
+echo ""
 
 # Instalação de pacotes necessários
 packages=(sudo apt-utils dialog jq apache2-utils git python3)
-
 for i in "${!packages[@]}"; do
     pkg="${packages[i]}"
     apt install -y "$pkg" > /dev/null 2>&1
@@ -148,23 +144,19 @@ for i in "${!packages[@]}"; do
     echo ""
 done
 
-# Baixa o script principal se ele ainda não estiver presente
-if [ ! -f "andromeda.sh" ]; then
-    curl -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.sh -o andromeda.sh
-    if [ $? -eq 0 ]; then
-        echo "Download bem-sucedido! Executando o script andromeda.sh..."
-        chmod +x andromeda.sh
-        ./andromeda.sh
-    else
-        echo "Falha ao baixar o script. Encerrando."
-        exit 1
-    fi
-else
-    echo "O arquivo andromeda.sh já existe. Executando-o agora..."
-    ./andromeda.sh
+# Verifica se o arquivo SetupAndromeda já existe e o remove
+if [ -e "SetupAndromeda" ]; then
+    echo "Removendo o arquivo SetupAndromeda..."
+    rm -f SetupAndromeda
 fi
 
-# Limpeza
+# Executa o próximo script após todas as verificações
+echo "Todas as verificações e instalações concluídas. Iniciando o próximo script..."
+
+# Baixa e executa o próximo script diretamente
+bash <(curl -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.sh)
+
+# Limpeza final
 clear
 echo "Processo concluído."
 rm -f SetupAndromeda
