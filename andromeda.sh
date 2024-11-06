@@ -96,6 +96,18 @@ nome_verificando() {
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
 
+#!/bin/bash
+
+# Função para exibir a recomendação do Ubuntu 20.04
+desc_ver(){
+    echo -e "                            Este script recomenda o uso do Ubuntu 20.04."
+    echo ""
+} 
+
+## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ##
+##                                         ANDROMEDA                                           ##
+## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ## // ##
+
 clear
 echo "Aguarde enquanto verificamos algumas informações..."
 sleep 1
@@ -103,6 +115,7 @@ sleep 1
 # Verifica se está usando Ubuntu 20.04
 if ! grep -q 'Ubuntu 20.04' /etc/os-release; then
     echo "Aviso: Este script foi projetado para Ubuntu 20.04. Pode não funcionar corretamente em outras versões."
+    desc_ver
     sleep 5
     clear
 fi
@@ -150,10 +163,10 @@ if [ -e "SetupAndromeda" ]; then
     rm -f SetupAndromeda
 fi
 
-# Executa o próximo script após todas as verificações
+# Baixa e executa o próximo script diretamente
 echo "Todas as verificações e instalações concluídas. Iniciando o próximo script..."
 
-# Baixa e executa o próximo script diretamente
+# Executa o próximo script após todas as verificações
 bash <(curl -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.sh)
 
 # Limpeza final
