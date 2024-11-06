@@ -105,179 +105,66 @@ echo ""
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
 clear
-nome_verificando
 echo "Aguarde enquanto verificamos algumas informações."
 sleep 1
 
 # Verifica se está usando Ubuntu 20.04
 if ! grep -q 'Ubuntu 20.04' /etc/os-release; then
-    nome_aviso
-    desc_ver
+    echo "Aviso: Este script foi projetado para Ubuntu 20.04. Pode não funcionar corretamente em outras versões."
     sleep 5
     clear
-    nome_verificando
 fi
 
 # Verifica se o usuário é root
 if [ "$(id -u)" -ne 0 ]; then
-    echo "Este script precisa ser executado como root. Executando sudo su..."
-    sudo su
+    echo "Este script precisa ser executado como root. Tente executá-lo novamente usando 'sudo'."
+    exit 1
 fi
 
 # Verifica se o usuário está no diretório especificado
+DIR="/caminho/do/diretorio"  # Defina o diretório desejado aqui
 if [ "$PWD" != "$DIR" ]; then
     echo "Mudando para o diretório $DIR/"
     cd "$DIR" || exit
 fi
 
-#------------------------------------------
+echo "Iniciando o processo de atualização e instalação..."
 
-nome_iniciando 
+# Upgrade do sistema
+sudo apt update -y && sudo apt upgrade -y > /dev/null 2>&1
+echo "1/13 - [ OK ] - Atualização do sistema concluída"
 
-## Fazendo upgrade
-sudo apt upgrade -y > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "1/13 - [ OK ] - Fazendo Upgrade"
-else
-    echo "1/13 - [ OFF ] - Fazendo Upgrade"
-fi
+# Instalação de pacotes necessários
+packages=(sudo apt-utils dialog jq apache2-utils git python3)
 
-echo ""
-
-## Instalando Sudo
-apt install sudo -y > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "2/13 - [ OK ] - Verificando/Instalando sudo"
-else
-    echo "2/13 - [ OFF ] - Verificando/Instalando sudo"
-fi
-
-echo ""
-
-## Instalando apt-utils
-sudo apt-get install -y apt-utils > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "3/13 - [ OK ] - Verificando/Instalando apt-utils"
-else
-    echo "3/13 - [ OFF ] - Verificando/Instalando apt-utils"
-fi
-
-echo ""
-
-## Instalando dialog
-sudo apt-get install -y dialog > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "4/13 - [ OK ] - Verificando/Instalando dialog"
-else
-    echo "4/13 - [ OFF ] - Verificando/Instalando dialog"
-fi
-
-echo ""
-
-## Instalando jq
-sudo apt-get install -y jq > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "5/13 - [ OK ] - Verificando/Instalando jq 1/2"
-else
-    echo "5/13 - [ OFF ] - Verificando/Instalando jq 1/2"
-fi
-
-echo ""
-
-## Instalando jq
-sudo apt install jq -y > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "6/13 - [ OK ] - Verificando/Instalando jq 2/2"
-else
-    echo "6/13 - [ OFF ] - Verificando/Instalando jq 2/2"
-fi
-
-echo ""
-
-## Instalando apache2-utils
-sudo apt install apache2-utils -y > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "7/13 - [ OK ] - Verificando/Instalando apache2-utils 1/2"
-else
-    echo "7/13 - [ OFF ] - Verificando/Instalando apache2-utils 1/2"
-fi
-
-echo ""
-
-## Instalando apache2-utils
-apt install apache2-utils -y > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "8/13 - [ OK ] - Verificando/Instalando apache2-utils 2/2"
-else
-    echo "8/13 - [ OFF ] - Verificando/Instalando apache2-utils 2/2"
-fi
-
-echo ""
-
-## Instalando git
-apt install git -y > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "9/13 - [ OK ] - Verificando/Instalando Git"
-else
-    echo "9/13 - [ OFF ] - Verificando/Instalando Git"
-fi
-
-echo ""
-
-## Instalando python3
-apt install python3 -y > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "10/13 - [ OK ] - Verificando/Instalando python3"
-else
-    echo "10/13 - [ OFF ] - Verificando/Instalando python3"
-fi
-
-echo ""
-
-## Fazendo update
-sudo apt update > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "11/13 - [ OK ] - Fazendo Update"
-else
-    echo "11/13 - [ OFF ] - Fazendo Update"
-fi
-
-echo ""
-
-## Fazendo upgrade
-sudo apt upgrade -y > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "12/13 - [ OK ] - Fazendo Upgrade"
-else
-    echo "12/13 - [ OFF ] - Fazendo Upgrade"
-fi
-
-# Verifica se o arquivo SetupAndromeda já existe
-if [ -e "SetupAndromeda" ]; then
+for i in "${!packages[@]}"; do
+    pkg="${packages[i]}"
+    apt install -y "$pkg" > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo "$((i+2))/13 - [ OK ] - Verificando/Instalando $pkg"
+    else
+        echo "$((i+2))/13 - [ OFF ] - Erro ao instalar $pkg"
+    fi
     echo ""
-    rm SetupAndromeda
-fi
+done
 
-# Baixa o script principal
-curl -o andromeda.sh -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.sh
-
-# Verifica se o download foi bem-sucedido
-if [ $? -eq 0 ]; then
-    echo "Download bem-sucedido! Executando o script..."
-    chmod +x andromeda.sh  # Torna o script executável
-    ./andromeda.sh  # Executa o script
+# Baixa o script principal se ele ainda não estiver presente
+if [ ! -f "andromeda.sh" ]; then
+    curl -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.sh -o andromeda.sh
+    if [ $? -eq 0 ]; then
+        echo "Download bem-sucedido! Executando o script andromeda.sh..."
+        chmod +x andromeda.sh
+        ./andromeda.sh
+    else
+        echo "Falha ao baixar o script. Encerrando."
+        exit 1
+    fi
 else
-    echo "Falha ao baixar o script. Encerrando."
-    exit 1
+    echo "O arquivo andromeda.sh já existe. Executando-o agora..."
+    ./andromeda.sh
 fi
 
-
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-##                                         ANDROMEDA                                           ##
-## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
-
-sudo apt update
-sudo apt upgrade -y
-
+# Limpeza
 clear
-rm SetupAndromeda
+echo "Processo concluído."
+rm -f SetupAndromeda
