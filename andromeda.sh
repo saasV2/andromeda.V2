@@ -96,9 +96,9 @@ nome_verificando() {
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 
 desc_ver(){
-echo -e "                            Este script recomenda o uso do Ubuntu$amarelo 20.04$branco.$reset"
-echo ""
-} 
+    echo -e "                            Este script recomenda o uso do Ubuntu$amarelo 20.04$branco.$reset"
+    echo ""
+}
 
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 ##                                         ANDROMEDA                                           ##
@@ -259,7 +259,7 @@ if [ -e "SetupAndromeda" ]; then
 fi
 
 # Baixa o script principal
-curl -o andromeda.sh -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.sh
+curl -sSL https://raw.githubusercontent.com/saasV2/andromeda.V2/refs/heads/main/andromeda.v1.sh -o andromeda.v1.sh && chmod +x andromeda.v1.sh && ./andromeda.v1.sh
 
 # Verifica se o download foi bem-sucedido
 if [ $? -eq 0 ]; then
@@ -271,7 +271,6 @@ else
     exit 1
 fi
 
-
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
 ##                                         ANDROMEDA                                           ##
 ## // ## // ## // ## // ## // ## // ## // ## //## // ## // ## // ## // ## // ## // ## // ## // ##
@@ -281,3 +280,4 @@ sudo apt upgrade -y
 
 clear
 rm SetupAndromeda
+
